@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CourtFlow.API/CourtFlow.API.csproj" />
+    <Project Path="src/CourtFlow.Application/CourtFlow.Application.csproj" />
+    <Project Path="src/CourtFlow.Domain/CourtFlow.Domain.csproj" />
+    <Project Path="src/CourtFlow.Infrastructure/CourtFlow.Infrastructure.csproj" />
+  </Folder>
+</Solution>
