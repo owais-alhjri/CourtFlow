@@ -2,5 +2,7 @@
 
 public enum UserRole
 {
-    
+    Member,
+    Staff,
+    Admin
 }

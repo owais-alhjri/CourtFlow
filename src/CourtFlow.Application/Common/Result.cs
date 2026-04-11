@@ -3,7 +3,7 @@ namespace CourtFlow.Application.Common;
 
 public record Result
 {
-    public bool IsSuccess { get; }
+    public bool IsSuccess { get; } 
     public Error? Error { get; }
 
     protected Result(bool isSuccess, Error? error)
