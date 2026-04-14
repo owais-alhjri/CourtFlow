@@ -34,7 +34,6 @@ public class User
         if (string.IsNullOrWhiteSpace(name) || name.Length < 3 || name.Length > 100)
             throw new ArgumentException("Invalid name");
 
-
     }
 
 }

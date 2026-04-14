@@ -15,9 +15,17 @@ public class Court
 
     public Court(string name, Sport sport)
     {
+        ValidateCommon(name);
         Id = Guid.NewGuid();
         Name = name;
         Sport = sport;
         isActive = true;
+    }
+
+    private void ValidateCommon(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name) || name.Length < 3 || name.Length > 100)
+            throw new ArgumentException("Invalid name");
+
     }
 }
