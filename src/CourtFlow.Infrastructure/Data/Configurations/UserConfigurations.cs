@@ -18,15 +18,14 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
             .HasMaxLength(100);
         builder.Property(u => u.Email)
             .HasConversion(
-                e => e.Value,
-                v => new EmailAddress(v))
+                v => v.Value, v => new EmailAddress(v))
             .IsRequired();
-        builder.Property(u => u.Password)
-            .HasConversion(p => p.Value, v => new Password(v))
+        builder.Property(u => u.PasswordHash)
+            .HasConversion(v => v.Value, v => new PasswordHash(v))
             .IsRequired()
             .HasMaxLength(255);
         builder.Property(u => u.Phone)
-            .HasConversion(p => p.Value, v => new PhoneNumber(v))
+            .HasConversion(v => v.Value, v => new PhoneNumber(v))
             .IsRequired();
         builder.Property(u => u.Role)
             .IsRequired()

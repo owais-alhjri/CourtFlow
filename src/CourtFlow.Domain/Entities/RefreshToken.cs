@@ -8,4 +8,19 @@ public class RefreshToken
     public DateTime ExpiresAt { get; set; }
     public bool IsRevoked { get; set; }
     public DateTime CreatedAt { get; set; }
+
+    protected RefreshToken()
+    {
+    }
+
+    public User User { get; private set; }
+
+    public RefreshToken(User user, string token, DateTime expiresAt, bool isRevoked)
+    {
+        UserId = user.Id;
+        Token = token;
+        ExpiresAt = expiresAt;
+        IsRevoked = isRevoked;
+        CreatedAt = DateTime.UtcNow;
+    }
 }

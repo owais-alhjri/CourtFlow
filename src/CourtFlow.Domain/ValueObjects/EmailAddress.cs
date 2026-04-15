@@ -9,7 +9,8 @@ public record EmailAddress
     public EmailAddress(string value)
     {
         if (!new EmailAddressAttribute().IsValid(value))
-            throw new ArgumentException("Invalid email");
-        Value = value;
+            throw new ArgumentException("Invalid email address.");
+        Value = value.Trim().ToLower();
     }
+
 };
