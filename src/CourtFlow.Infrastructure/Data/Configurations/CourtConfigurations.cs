@@ -11,7 +11,7 @@ public class CourtConfigurations : IEntityTypeConfiguration<Court>
         builder.ToTable("Courts");
         builder.HasKey(c => c.Id);
         builder.Property(c => c.Id)
-            .IsRequired();
+            .ValueGeneratedOnAdd();
         builder.Property(c => c.Name)
             .IsRequired()
             .HasMaxLength(100);

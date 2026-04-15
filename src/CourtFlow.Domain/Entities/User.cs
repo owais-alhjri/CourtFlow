@@ -5,12 +5,13 @@ namespace CourtFlow.Domain.Entities;
 
 public class User
 {
-    public Guid Id { get; private set; }
+    public int Id { get; private set; }
     public string Name { get; private set; }
     public EmailAddress Email { get; private set; }
     public PhoneNumber Phone { get; private set; }
     public Password Password { get; private set; }
     public UserRole Role { get; private set; }
+    public DateTime CreatedAt { get; private set; }
 
     protected User()
     {
@@ -21,12 +22,12 @@ public class User
     {
         ValidateCommon(name);
 
-        Id = Guid.NewGuid();
         Name = name;
         Email = email;
         Phone = phone;
         Password = password;
         Role = UserRole.Member;
+        CreatedAt = DateTime.UtcNow;
     }
 
     private void ValidateCommon(string name)
