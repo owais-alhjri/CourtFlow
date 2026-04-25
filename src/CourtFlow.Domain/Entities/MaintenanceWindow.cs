@@ -9,6 +9,7 @@ public class MaintenanceWindow
     public string Reason { get; private set; }
 
 
+    [Obsolete("For EF core only.", error: true)]
     protected MaintenanceWindow()
     {
     }

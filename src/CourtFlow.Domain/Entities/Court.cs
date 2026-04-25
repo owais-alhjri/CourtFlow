@@ -11,6 +11,7 @@ public class Court
     public DateTime CreatedAt { get; private set; }
 
 
+    [Obsolete("For EF core only.", error: true)]
     protected Court()
     {
     }

@@ -8,6 +8,7 @@ public class Booking
     public int CourtId { get; private set; }
     public int UserId { get; private set; }
 
+    // TODO: Create a ValueObject for Start and End time
     public DateTime StartTime { get; private set; }
     public DateTime EndTime { get; private set; }
     public Status Status { get; private set; }
@@ -16,6 +17,7 @@ public class Booking
     public DateTime CreatedAt { get; private set; }
 
 
+    [Obsolete("For EF core only.", error: true)]
     protected Booking()
     {
     }

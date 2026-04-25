@@ -10,6 +10,7 @@ public class PricingRule
     public decimal PricePerHour { get; set; }
 
 
+    [Obsolete("For EF core only.", error: true)]
     protected PricingRule()
     {
     }

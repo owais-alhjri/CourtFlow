@@ -9,6 +9,8 @@ public class RefreshToken
     public bool IsRevoked { get; set; }
     public DateTime CreatedAt { get; set; }
 
+
+    [Obsolete("For EF core only.", error: true)]
     protected RefreshToken()
     {
     }

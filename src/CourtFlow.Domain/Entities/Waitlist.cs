@@ -10,6 +10,7 @@ public class Waitlist
     public DateTime RequestedEndTime { get; private set; }
     public DateTime JoinedAt { get; private set; }
 
+    [Obsolete("For EF core only.", error: true)]
     protected Waitlist()
     {
     }
