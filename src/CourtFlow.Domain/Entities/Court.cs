@@ -26,10 +26,13 @@ public class Court
 
     }
 
-    private void ValidateCommon(string name)
+    private static void ValidateCommon(string name)
     {
-        if (string.IsNullOrWhiteSpace(name) || name.Length < 3 || name.Length > 100)
+        if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Invalid name");
+
+        if (name.Length < 3 || name.Length > 100)
+            throw new ArgumentException("Name must be between 3 and 100 characters");
 
     }
 }
