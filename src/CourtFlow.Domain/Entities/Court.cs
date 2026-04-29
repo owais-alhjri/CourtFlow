@@ -7,7 +7,7 @@ public class Court
     public int Id { get; private set; }
     public string Name { get; private set; }
     public Sport Sport { get; private set; }
-    public bool isActive { get; private set; }
+    public bool IsActive { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
 
@@ -19,11 +19,12 @@ public class Court
     public Court(string name, Sport sport)
     {
         ValidateCommon(name);
+        if (!Enum.IsDefined(sport))
+            throw new ArgumentException("Invalid Sport.");
         Name = name;
         Sport = sport;
-        isActive = true;
+        IsActive = true;
         CreatedAt = DateTime.UtcNow;
-
     }
 
     private static void ValidateCommon(string name)

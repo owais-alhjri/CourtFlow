@@ -18,7 +18,7 @@ public class CourtConfigurations : IEntityTypeConfiguration<Court>
         builder.Property(c => c.Sport)
             .HasConversion<string>()
             .IsRequired();
-        builder.Property(c => c.isActive)
+        builder.Property(c => c.IsActive)
             .IsRequired();
     }
 }

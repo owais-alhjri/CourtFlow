@@ -1,13 +1,14 @@
-﻿namespace CourtFlow.Domain.Entities;
+﻿using CourtFlow.Domain.ValueObjects;
+
+namespace CourtFlow.Domain.Entities;
 
 public class PricingRule
 {
     public int Id { get; private set; }
     public int CourtId { get; private set; }
     public DayOfWeek DayOfWeek { get; private set; }
-    public int StartHour { get; set; }
-    public int EndHour { get; set; }
-    public decimal PricePerHour { get; set; }
+    public HourRange HourRange { get; private set; }
+    public Money PricePerHour { get; private set; }
 
 
     [Obsolete("For EF core only.", error: true)]
@@ -17,12 +18,18 @@ public class PricingRule
 
     public Court Court { get; private set; }
 
-    public PricingRule(Court court, DayOfWeek dayOfWeek, int startHour, int endHour, decimal pricePerHour)
+    public PricingRule(Court court, DayOfWeek dayOfWeek, HourRange hourRange, Money pricePerHour)
     {
+        ArgumentNullException.ThrowIfNull(court);
+        ArgumentNullException.ThrowIfNull(hourRange);
+        ArgumentNullException.ThrowIfNull(pricePerHour);
+        if (!Enum.IsDefined(dayOfWeek))
+            throw new ArgumentException("Invalid day of week.");
+        
+        Court = court;
         CourtId = court.Id;
         DayOfWeek = dayOfWeek;
-        StartHour = startHour;
-        EndHour = endHour;
+        HourRange= hourRange;
         PricePerHour = pricePerHour;
     }
 }
