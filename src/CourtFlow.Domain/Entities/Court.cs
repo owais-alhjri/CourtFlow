@@ -16,7 +16,7 @@ public class Court
     {
     }
 
-    public Court(string name, Sport sport)
+    private Court(string name, Sport sport)
     {
         ValidateCommon(name);
         if (!Enum.IsDefined(sport))
@@ -25,6 +25,11 @@ public class Court
         Sport = sport;
         IsActive = true;
         CreatedAt = DateTime.UtcNow;
+    }
+
+    public static Court Create(string name, Sport sport)
+    {
+        return new Court(name, sport);
     }
 
     private static void ValidateCommon(string name)

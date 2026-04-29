@@ -18,7 +18,6 @@ public class User
     [Obsolete("For EF core only.", error:true)]
     protected User()
     {
-
     }
 
     private User(string name, EmailAddress email, PhoneNumber phone, PasswordHash password)

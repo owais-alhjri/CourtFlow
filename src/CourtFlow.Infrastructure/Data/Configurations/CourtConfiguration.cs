@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CourtFlow.Infrastructure.Data.Configurations;
 
-public class CourtConfigurations : IEntityTypeConfiguration<Court>
+public class CourtConfiguration : IEntityTypeConfiguration<Court>
 {
     public void Configure(EntityTypeBuilder<Court> builder)
     {
@@ -16,9 +16,13 @@ public class CourtConfigurations : IEntityTypeConfiguration<Court>
             .IsRequired()
             .HasMaxLength(100);
         builder.Property(c => c.Sport)
-            .HasConversion<string>()
-            .IsRequired();
+            .IsRequired()
+            .HasConversion<string>();
         builder.Property(c => c.IsActive)
             .IsRequired();
+        builder.Property(c => c.CreatedAt)
+            .IsRequired()
+            .ValueGeneratedNever();
+        builder.HasIndex(c => c.Name);
     }
 }
