@@ -31,7 +31,7 @@ public class PricingRuleConfiguration: IEntityTypeConfiguration<PricingRule>
             .HasConversion(
                 v => v.Value,
                 v => new Money(v))
-            .HasColumnType("decimal(18,2)")
+            .HasColumnType("numeric(18,2)")
             .IsRequired();
         builder.HasOne(p => p.Court)
             .WithMany()

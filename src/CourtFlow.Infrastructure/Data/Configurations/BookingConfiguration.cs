@@ -35,7 +35,7 @@ public class BookingConfiguration : IEntityTypeConfiguration<Booking>
             .HasConversion(
                 v =>v.Value,
                 v=> new Money(v))
-            .HasColumnType("decimal(18,2)")
+            .HasColumnType("numeric(18,2)")
             .IsRequired();
         builder.Property(b => b.IsLateCancellation)
             .IsRequired();
