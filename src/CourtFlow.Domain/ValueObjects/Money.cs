@@ -11,4 +11,6 @@ public record Money
 
         Value = value;
     }
+    private Money() { }  // EF Core — only needed if used with OwnsOne
+
 }

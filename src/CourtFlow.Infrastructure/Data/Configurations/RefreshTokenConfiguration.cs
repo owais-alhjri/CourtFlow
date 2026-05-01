@@ -1,0 +1,36 @@
+﻿using CourtFlow.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace CourtFlow.Infrastructure.Data.Configurations;
+
+public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
+{
+    public void Configure(EntityTypeBuilder<RefreshToken> builder)
+    {
+        builder.ToTable("RefreshTokens");
+        builder.HasKey(r => r.Id);
+        builder.Property(r => r.Id)
+            .ValueGeneratedOnAdd();
+        builder.Property(r => r.UserId)
+            .IsRequired();
+        builder.Property(r => r.Token)
+            .HasMaxLength(500)
+            .IsRequired();
+        builder.Property(r => r.ExpiresAt)
+            .ValueGeneratedNever()
+            .IsRequired();
+        builder.Property(r => r.IsRevoked)
+            .IsRequired();
+        builder.Property(r => r.CreatedAt)
+            .ValueGeneratedNever()
+            .IsRequired();
+        builder.HasOne(r => r.User)
+            .WithMany()
+            .HasForeignKey(r => r.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.HasIndex(r => r.Token)
+            .IsUnique();
+        builder.HasIndex(r => r.UserId);
+    }
+}

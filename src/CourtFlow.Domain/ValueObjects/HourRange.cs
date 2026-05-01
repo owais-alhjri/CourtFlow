@@ -18,5 +18,6 @@ public record HourRange
         Start = start;
         End = end;
     }
+    private HourRange() { } //EF Core
 
 }
